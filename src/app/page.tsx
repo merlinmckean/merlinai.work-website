@@ -60,7 +60,7 @@ export default function Home() {
       <div className="flex flex-col items-center justify-center w-full max-w-5xl">
         <div className="flex flex-row flex-wrap items-center justify-center w-full gap-x-4 gap-y-2 px-2 md:px-8">
           <span className="text-blue-700 font-semibold text-lg" style={{ fontFamily: 'Geist, ui-sans-serif, system-ui, sans-serif' }}>
-            If you've
+            If you&apos;ve
           </span>
           <span className="inline-block relative min-w-[70px] h-12 align-middle">
             <span

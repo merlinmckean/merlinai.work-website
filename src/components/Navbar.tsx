@@ -1,8 +1,6 @@
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
-import { Menu, X } from 'lucide-react'
 
 const navLinks = [
   { name: 'Home', href: '/' },
@@ -12,7 +10,6 @@ const navLinks = [
 ]
 
 export default function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
     <header className="bg-white/95 backdrop-blur sticky top-0 z-50">
