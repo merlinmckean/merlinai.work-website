@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 
 const everHeard = [
   'AI is going to take your job',
-  "AI won't take your job but someone using AI will",
-  "If you're not using AI to your advantage, you're not going to make it",
+  "AI won&apos;t take your job but someone using AI will",
+  "If you&apos;re not using AI to your advantage, you&apos;re not going to make it",
 ];
 const neverHeard = [
   'API', 'n8n', 'MCP', 'RAG', 'Claude', 'Grok', 'webhook', 'Cursor', 'HuggingFace', 'OpenRouter',
