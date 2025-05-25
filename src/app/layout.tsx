@@ -1,22 +1,22 @@
-// src/app/layout.tsx
+// app/layout.tsx
 import './globals.css'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import Navbar from '../components/Navbar'
+import { ReactNode } from 'react'
 
-const inter = Inter({ subsets: ['latin'] })
-
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Merlin AI',
-  description: 'AI tools and consulting by Merlin AI',
+  description: 'AI automation, insights, and innovation',
+  icons: {
+    icon: '/merlin-ai-logo-mark-full-colour-rgb.svg',
+  },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-white text-gray-900`}>
+      <body className="bg-white text-gray-900 font-sans antialiased">
         <Navbar />
-        <main className="max-w-5xl mx-auto px-6 py-12">{children}</main>
+        {children}
       </body>
     </html>
   )

@@ -1,4 +1,9 @@
-/* src/app/globals.css */
+@import url('https://geist-font.vercel.app/font.css');
+/* app/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html, body {
+  font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
+}
