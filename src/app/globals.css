@@ -5,5 +5,5 @@
 @tailwind utilities;
 
 html, body {
-  font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
+  @apply font-sans bg-background text-neutral-900;
 }

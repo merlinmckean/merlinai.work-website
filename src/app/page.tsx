@@ -1,6 +1,12 @@
 "use client";
 // src/app/page.tsx
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
+
+export const metadata = {
+  title: 'Merlin AI - Modern AI Consulting',
+  description: 'Automation, insights and innovation for your business',
+}
 
 const everHeard = [
   'AI is going to take your job',
@@ -53,10 +59,14 @@ export default function Home() {
   // We'll use a key on the animated span to trigger re-mount and animation
 
   return (
-    <section className="w-full flex flex-col items-center justify-center py-24 px-4 gap-12">
-      <h1 className="text-center text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight max-w-3xl" style={{ fontFamily: 'Geist, ui-sans-serif, system-ui, sans-serif' }}>
-        We help businesses harness the power of AI for automation, insights, and innovation.
+    <section className="w-full flex flex-col items-center justify-center py-32 px-4 gap-12 bg-gradient-to-b from-white to-background">
+      <div className="max-w-6xl mx-auto flex flex-col items-center gap-12">
+      <h1 className="text-center text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-gray-900 leading-tight max-w-4xl">
+        Empower your business with AI
       </h1>
+      <p className="text-lg text-gray-700 max-w-2xl text-center">
+        We help forward-thinking companies streamline operations with automation and custom AI solutions.
+      </p>
       <div className="flex flex-col items-center justify-center w-full max-w-5xl">
         <div className="flex flex-row flex-wrap items-center justify-center w-full gap-x-4 gap-y-2 px-2 md:px-8">
           <span className="text-blue-700 font-semibold text-lg" style={{ fontFamily: 'Geist, ui-sans-serif, system-ui, sans-serif' }}>
@@ -97,12 +107,16 @@ export default function Home() {
           </span>
         </div>
       </div>
-      <style jsx global>{`
-        @keyframes dropIn {
-          0% { opacity: 0; transform: translateY(-40px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
+      <Link href="/contact" className="rounded-full bg-primary text-white px-8 py-3 font-semibold hover:bg-primary-dark transition">
+        Book a Call
+      </Link>
+        <style jsx global>{`
+          @keyframes dropIn {
+            0% { opacity: 0; transform: translateY(-40px); }
+            100% { opacity: 1; transform: translateY(0); }
+          }
+        `}</style>
+      </div>
     </section>
   );
 }
