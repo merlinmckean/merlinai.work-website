@@ -1,59 +1,79 @@
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 const navLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'Services', href: '/services' },
-  { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Features', href: '/features' },
+  { name: 'Solutions', href: '/solutions' },
+  { name: 'Pricing', href: '/pricing' },
+  { name: 'Company', href: '/company' },
 ]
 
 export default function Navbar() {
+  const pathname = usePathname()
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
-    <header className="bg-white/95 backdrop-blur sticky top-0 z-50">
-      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
+    <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+      scrolled ? 'bg-white/80 backdrop-blur-md border-b border-gray-100' : 'bg-transparent'
+    }`}>
+      <nav className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex-shrink-0 flex items-center h-10 w-[120px] relative">
-          <Link href="/">
+        <Link href="/" className="flex items-center">
+          <div className="relative h-8 w-32">
             <Image
               src="/merlin-ai-logo-full-colour-rgb.svg"
-              alt="Merlin AI Logo"
+              alt="Merlin AI"
               fill
-              style={{ objectFit: 'contain', width: '100%', height: '100%' }}
+              className="object-contain object-left"
               priority
             />
+          </div>
+        </Link>
+
+        {/* Center Nav */}
+        <div className="hidden md:flex items-center space-x-8">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className={`text-sm font-medium transition-colors duration-200 ${
+                pathname === link.href
+                  ? 'text-gray-900'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
+
+        {/* Right Actions */}
+        <div className="flex items-center space-x-6">
+          <Link
+            href="/sign-in"
+            className="hidden md:block text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+          >
+            Log in
           </Link>
-        </div>
-        {/* Centered pill nav */}
-        <div className="flex-1 flex justify-center">
-          <ul className="flex gap-6 bg-white rounded-full px-6 py-2 text-base font-medium tracking-wide shadow-none" style={{ fontFamily: 'Geist, sans-serif' }}>
-            {navLinks.map((link) => (
-              <li key={link.name} className="flex items-center">
-                <Link
-                  href={link.href}
-                  className="px-3 py-1 rounded-full uppercase tracking-wide text-gray-700 hover:text-blue-700 transition-colors duration-150 font-medium border-b-2 border-transparent hover:border-blue-600"
-                  style={{ fontFamily: 'Geist, sans-serif', fontWeight: 500, letterSpacing: '0.05em' }}
-                >
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        {/* CTA Button */}
-        <div className="flex items-center">
           <Link
             href="/book-call"
-            className="rounded-full border border-gray-300 bg-white text-blue-700 px-6 py-2 font-semibold shadow-sm hover:bg-blue-50 hover:text-blue-900 transition-all duration-150 text-base tracking-wide"
-            style={{ fontFamily: 'Geist, sans-serif', letterSpacing: '0.05em' }}
+            className="px-6 py-2.5 bg-black text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-colors duration-200"
           >
-            Book a Call
+            Get started
           </Link>
         </div>
       </nav>
     </header>
   )
 }
-

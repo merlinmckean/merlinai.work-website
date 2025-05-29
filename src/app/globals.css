@@ -1,9 +1,130 @@
-@import url('https://geist-font.vercel.app/font.css');
-/* app/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-  font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
+@layer base {
+  :root {
+    --max-width: 1440px;
+    /* Define base colors as CSS variables for easier use if needed outside Tailwind */
+    --color-primary: #0A2540;
+    --color-accent: #00A9FF;
+    --color-neutral-950: #0B0F1A;
+    --color-neutral-200: #E5E7EB;
+  }
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'kern' 1;
+    font-kerning: normal;
+    @apply bg-neutral-950 text-neutral-200; /* Dark background, light text */
+  }
+
+  /* Focus styles */
+  *:focus {
+    outline: none;
+  }
+
+  *:focus-visible {
+    @apply outline-2 outline-accent outline-offset-2; /* Use accent color for focus */
+  }
+
+  /* Selection styles */
+  ::selection {
+    @apply bg-accent text-primary-dark; /* Accent background, dark blue text for selection */
+  }
+
+  /* Smooth transitions for interactive elements */
+  button,
+  a {
+    transition: all 0.2s ease;
+  }
+
+  a {
+    @apply text-accent-light hover:text-accent;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-neutral-50;
+  }
+}
+
+@layer utilities {
+  /* Text balance for better typography */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Subtle animations */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Gradient text that works cross-browser */
+  .gradient-text {
+    @apply bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent;
+  }
+
+  /* Shimmer effect for buttons/links - can be applied with a class */
+  .shimmer-effect {
+    @apply relative overflow-hidden;
+  }
+
+  .shimmer-effect::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-accent-light/50 to-transparent;
+    background-size: 200% 100%;
+    animation: shimmer 2.5s infinite linear;
+  }
+
+  /* Subtle shadow for cards - dark theme version */
+  .card-shadow {
+    @apply shadow-md shadow-neutral-900/50;
+  }
+
+  .card-shadow-hover {
+    @apply shadow-lg shadow-neutral-800/60;
+  }
+}
+
+/* Custom scrollbar - dark theme */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-neutral-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-neutral-600 rounded-[5px];
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-neutral-500;
 }
