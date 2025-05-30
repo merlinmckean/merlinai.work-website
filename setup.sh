@@ -1,10 +1,13 @@
 #!/bin/bash
 
-echo "Running initial project setup..."
+echo "Running Codex environment setup..."
 
 # Install dependencies
 npm install
 
-# Run initial commands (optional)
+# Optional: fix line endings (especially on Windows)
+git config --global core.autocrlf input
+
+# Optional: run initial checks
 npm run lint || true
 npm run build || true
