@@ -7,14 +7,14 @@ export const metadata = {
   title: 'Merlin AI - Enterprise AI Solutions',
   description: 'Transform your business with intelligent automation and custom AI solutions.',
   icons: {
-    icon: '/merlin-ai-logo-mark-full-colour-rgb.svg',
+    icon: '/merlinai-logo.svg',
   },
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body style={{ backgroundColor: 'purple' }}>
+      <body className="bg-gradient-to-b from-slate-950 to-slate-900 text-white">
         <Navbar />
         {children}
         <Footer />

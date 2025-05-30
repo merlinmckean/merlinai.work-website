@@ -1,4 +1,4 @@
-// 'use client'; (removed to solve metadata error)
+'use client'; 
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
